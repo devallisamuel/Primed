@@ -1,0 +1,55 @@
+<section class="px-4">
+  <h1 class="font-bold text-center mx-auto text-2xl">Users</h1>
+  <form [formGroup]="userForm" (ngSubmit)="addUser()">
+    <div class="flex my-4 mx-auto w-[80%]">
+      <div>
+        <label class="mr-2"
+          >Name:
+          <input formControlName="name" type="text" class="border p-2" />
+        </label>
+        <div
+          *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched"
+          class="text-red-500"
+        >
+          Name is required.
+        </div>
+      </div>
+
+      <div>
+        <label>Email:</label>
+        <input formControlName="email" type="email" class="border p-2 ml-2" />
+        <div
+          *ngIf="
+            userForm.get('email')?.invalid && userForm.get('email')?.touched
+          "
+          class="text-red-500"
+        >
+          Valid email is required.
+        </div>
+      </div>
+
+      <div class="ml-2">
+        <label>Role:</label>
+        <select formControlName="role" class="border p-2 ml-2">
+          <option value="" disabled>Select Role</option>
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+        </select>
+        <div
+          *ngIf="userForm.get('role')?.invalid && userForm.get('role')?.touched"
+          class="text-red-500"
+        >
+          Role is required.
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="userForm.invalid"
+        class="bg-blue-500 text-white p-2 rounded ml-4"
+      >
+        Add User
+      </button>
+    </div>
+  </form>
+</section>

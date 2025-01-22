@@ -1,0 +1,23 @@
+<section class="px-2">
+  <h1 class="text-center mx-auto font-bold text-2xl">Dashboard</h1>
+  <div class="p-4 mx-auto rounded bg-slate-400 w-[20rem] h-[10rem] mt-4 shadow-md">
+    <h1 class="text-xl font-semibold mx-auto text-center">User Statistics</h1>
+    <div class="flex justify-between items-center">
+      <p>Total Users:</p>
+      <p>{{ totalUsers }}</p>
+    </div>
+    <div class="flex justify-between items-center">
+      <p>Admins:</p>
+      <p>{{ adminCount }}</p>
+    </div>
+    <div class="flex justify-between items-center">
+      <p>Users:</p>
+      <p>{{ userCount }}</p>
+    </div>
+  </div>
+    <div class="mt-8 flex ">
+        <button
+        [routerLink]="['/user-management']"  
+        class=" text-white bg-blue-600 rounded px-6 py-2 mx-auto">View Users</button>
+    </div>
+</section>

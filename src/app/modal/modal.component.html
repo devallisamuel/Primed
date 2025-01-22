@@ -1,0 +1,55 @@
+<h2 mat-dialog-title>Edit User</h2>
+<div mat-dialog-content>
+    <section class="px-4">
+  <h1 class="font-bold text-center mx-auto text-2xl">Users</h1>
+  <form [formGroup]="userForm" (ngSubmit)="addUser()">
+    <div class="my-4  w-[80%]">
+      <div>
+        <label class="mr-2"
+          >Name:
+          <input formControlName="name" type="text" class="border p-2" />
+        </label>
+        <div
+          *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.touched"
+          class="text-red-500 mt-2"
+        >
+          Name is required.
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label>Email:</label>
+        <input formControlName="email" type="email" class="border p-2 ml-2" />
+        <div
+          *ngIf="
+            userForm.get('email')?.invalid && userForm.get('email')?.touched
+          "
+          class="text-red-500"
+        >
+          Valid email is required.
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label>Role:</label>
+        <select formControlName="role" class="border p-2 ml-2">
+          <option value="" disabled>Select Role</option>
+          <option value="Admin">Admin</option>
+          <option value="User">User</option>
+        </select>
+        <div
+          *ngIf="userForm.get('role')?.invalid && userForm.get('role')?.touched"
+          class="text-red-500"
+        >
+          Role is required.
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+
+</div>
+<div mat-dialog-actions  style = "display:flex; align-items:center; justify-content:space-between">
+  <button  mat-raised-button  mat-dialog-close color = "warn">Cancel</button>
+  <button  mat-raised-button [mat-dialog-close]="'Confirmed'" color = "primary"  (click) = "addUser()">Confirm</button>
+</div>
